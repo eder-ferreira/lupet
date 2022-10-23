@@ -31,7 +31,7 @@ if (isset($_POST['atualizar'])) {
   $result_usuario = mysqli_query($con, $sql);
   if ($result_usuario) {
     echo "Dados atualizados com sucesso!";
-    header('location:display.php');
+    header('location:display_user.php');
   } else {
     die(mysqli_error($con));
   }
