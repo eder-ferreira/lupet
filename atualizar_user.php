@@ -7,26 +7,34 @@ $id = $_GET['atualizarid'];
 $sql = "SELECT * FROM tb_usuario WHERE id='$id'";
 $result = mysqli_query($con, $sql);
 $row = mysqli_fetch_assoc($result);
-$dtatualizacao = $row['dt_atualizacao'];
+
+$dtcadastro = $row['dt_cadastro'];
+$dt_atualizacao = $row['dt_atualizacao'];
 $nome = $row['nome'];
-$senha = $row['senha'];
+$data_nascimento = $row['data_nascimento'];
+$telefone = $row['telefone'];
 $cpf = $row['cpf'];
 $crmv = $row['crmv'];
 $email = $row['email'];
-$telefone = $row['telefone'];
+$senha = $row['senha'];
+
 
 //ATUALIZA OS DADOS
 if (isset($_POST['atualizar'])) {
-  $dt_atualizacao = $_POST['dt_atualizacao'];
+  //$dtcadastro = $_POST['dt_cadastro'];
+  //$dt_atualizacao = $_POST['dt_atualizacao'];
   $nome = $_POST['nome'];
-  $senha = $_POST['senha'];
+  $data_nascimento = $_POST['data_nascimento'];
+  $telefone = $_POST['telefone'];
   $cpf = $_POST['cpf'];
   $crmv = $_POST['crmv'];
   $email = $_POST['email'];
-  $telefone = $_POST['telefone'];
+  $senha = $_POST['senha'];
 
 
-  $sql = "update tb_usuario set id='$id',dt_atualizacao='$dt_atualizacao',nome='$nome', senha='$senha',cpf='$cpf',crmv='$crmv',email='$email',telefone='$telefone' WHERE id='$id'";
+  $sql = "update tb_usuario set id='$id',nome='$nome',data_nascimento='$data_nascimento', 
+  telefone='$telefone',cpf='$cpf',crmv='$crmv',email='$email',senha='$senha'
+  WHERE id='$id'";
 
   $result_usuario = mysqli_query($con, $sql);
   if ($result_usuario) {
@@ -60,23 +68,29 @@ if (isset($_POST['atualizar'])) {
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </div>
-  </nav>
+  </nav> <br>
+
   <div class="container my-5  col-md-4">
     <form method="POST">
 
     <div class="form-group">
-        <label>Dt-Atualização:</label>
-        <input type="date" class="form-control" name="dt_atualizacao" value="<?= $dt_atualizacao; ?>">
+        <label>Cadastrado em::</label><?php echo $dtcadastro; ?>
+        <label>Ultima Atualização:</label><?php echo $dt_atualizacao; ?>
       </div>
 
       <div class="form-group">
         <label>Usuário:</label>
-        <input type="text" class="form-control" name="nome" value="<?= $nome; ?>">
+        <input type="text" class="form-control" name="nome" value="<?php echo $nome; ?>">
       </div>
 
-        <div class="form-group">
-          <label>Senha:</label>
-          <input type="text" class="form-control" name="senha" value="<?php echo $senha; ?>" / />
+      <div class="form-group">
+        <label>Data Nascimento:</label>
+        <input type="date" class="form-control" name="data_nascimento" value="<?php echo $data_nascimento; ?>">
+      </div>
+
+      <div class="form-group">
+          <label>Telefone:</label>
+          <input type="tel" class="form-control" name="telefone" value="<?php echo $telefone; ?>">
         </div>
 
         <div class="form-group">
@@ -95,10 +109,10 @@ if (isset($_POST['atualizar'])) {
         </div>
 
         <div class="form-group">
-          <label>Telefone:</label>
-          <input type="text" class="form-control" name="telefone" value="<?php echo $telefone; ?>">
+          <label>Senha:</label>
+          <input type="text" class="form-control" name="senha" value="<?php echo $senha; ?>" / />
         </div>
-     
+
         <button type="submit" class="btn btn-primary" name="atualizar">Atualizar</button>
         <a href="display_user.php" class="btn btn-warning">Voltar</a>
     </form>

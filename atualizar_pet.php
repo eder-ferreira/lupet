@@ -7,7 +7,9 @@ $id = $_GET['atualizarid'];
 $sql = "SELECT * FROM tb_animal WHERE id='$id'";
 $result = mysqli_query($con, $sql);
 $row = mysqli_fetch_assoc($result);
-$dtatualizacao = $row['dt_atualizacao'];
+
+$dtcadastro = $row['dt_cadastro'];
+$dt_atualizacao = $row['dt_atualizacao'];
 $nome_animal = $row['nome_animal'];
 $dt_nascimento = $row['dt_nascimento'];
 $sexo_animal = $row['sexo_animal'];
@@ -19,7 +21,7 @@ $observação_animal = $row['observação_animal'];
 
 //ATUALIZA OS DADOS
 if (isset($_POST['atualizar'])) {
-  $dt_atualizacao = $_POST['dt_atualizacao'];
+ // $dt_atualizacao = $_POST['dt_atualizacao'];
   $nome_animal = $_POST['nome_animal'];
   $dt_nascimento = $_POST['dt_nascimento'];
   $sexo_animal = $_POST['sexo_animal'];
@@ -69,42 +71,42 @@ if (isset($_POST['atualizar'])) {
     <form method="POST">
 
     <div class="form-group">
-        <label>Dt-Atualização:</label>
-        <input type="date" class="form-control" name="dt_atualizacao" value="<?= $dt_atualizacao; ?>">
+        <label>Cadastrado em::</label><?php echo $dtcadastro; ?>
+        <label>Ultima Atualização:</label><?php echo $dt_atualizacao; ?>
       </div>
 
       <div class="form-group">
         <label>Nome do Animal:</label>
-        <input type="text" class="form-control" name="nome" value="<?= $nome_animal; ?>">
+        <input type="text" class="form-control" name="nome_animal" value="<?= $nome_animal; ?>">
       </div>
 
         <div class="form-group">
           <label>Dt-Nascimento:</label>
-          <input type="date" class="form-control" name="senha" value="<?php echo $dt_nascimento; ?>" / />
+          <input type="date" class="form-control" name="dt_nascimento" value="<?php echo $dt_nascimento; ?>" / />
         </div>
 
         <div class="form-group">
           <label>Sexo:</label>
-          <input type="text" class="form-control" name="cpf" value="<?php echo $sexo_animal; ?>" / />
+          <input type="text" class="form-control" name="sexo_animal" value="<?php echo $sexo_animal; ?>" / />
         </div>
 
         <div class="form-group">
           <label>Peso:</label>
-          <input type="text" class="form-control" name="crmv" value="<?php echo $peso_animal; ?>" / />
+          <input type="text" class="form-control" name="peso_animal" value="<?php echo $peso_animal; ?>" / />
         </div>
 
         <div class="form-group">
           <label>Raça:</label>
-          <input type="email" class="form-control" name="email" value="<?php echo $raca; ?>">
+          <input type="text" class="form-control" name="raca" value="<?php echo $raca; ?>">
         </div>
 
         <div class="form-group">
           <label>Tipo:</label>
-          <input type="text" class="form-control" name="telefone" value="<?php echo $tipo; ?>">
+          <input type="text" class="form-control" name="tipo" value="<?php echo $tipo; ?>">
         </div>
         <div class="form-group">
           <label>Observação:</label>
-          <input type="text" class="form-control" name="telefone" value="<?php echo $observação_animal; ?>">
+          <input type="text" class="form-control" name="observação_animal" value="<?php echo $observação_animal; ?>">
         </div>   
      
         <button type="submit" class="btn btn-primary" name="atualizar">Atualizar</button>

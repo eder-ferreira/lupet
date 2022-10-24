@@ -22,7 +22,7 @@ include "conexao.php";
 
     </div>
     <button class="btn btn-primary my-1"><a href="cadastrar_pet.php" class="text-light">Cadastrar</a></button>
-    <a href="index.php" class="btn btn-warning">Voltar</a>
+    <a href="index_rota.php" class="btn btn-warning">Voltar</a>
   </nav>
 
   <div class="container">
@@ -35,6 +35,7 @@ include "conexao.php";
           <th scope="col">Dt-Nascimento</th>
           <th scope="col">Sexo</th>
           <th scope="col">Castrado</th>
+          <th scope="col">Cor</th>
           <th scope="col">Peso</th>
           <th scope="col">Raca</th>
           <th scope="col">Tipo</th>
@@ -55,6 +56,7 @@ include "conexao.php";
             $dtnascimento = $row['dt_nascimento'];
             $sexo = $row['sexo_animal'];
             $castrado = $row['animal_castrado'];
+            $cor = $row['cor_animal'];
             $peso = $row['peso_animal'];
             $raca = $row['raca'];
             $tipo = $row['tipo'];
@@ -68,6 +70,7 @@ include "conexao.php";
             <td>' . $dtnascimento . '</td>
             <td>' . $sexo . '</td>
             <td>' . $castrado . '</td>
+            <td>' . $cor . '</td>
             <td>' . $peso . '</td>
             <td>' . $raca . '</td>
             <td>' . $tipo . '</td>

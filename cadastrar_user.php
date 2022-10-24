@@ -1,19 +1,21 @@
 
 <?php
 
+// PROCESSA USUARIO
+
 include 'conexao.php';
-if (isset($_POST['salvar'])) {
-  $dt_cadastro = $_POST['dt_cadastro'];
+if (isset($_POST['enviarDados'])) {
   $nome = $_POST['nome'];
+  $data_nascimento = $_POST['data_nascimento'];
+  $telefone = $_POST['telefone'];
+  $email = $_POST['email'];
   $senha = $_POST['senha'];
   $cpf = $_POST['cpf'];
   $crmv = $_POST['crmv'];
-  $email = $_POST['email'];
-  $telefone = $_POST['telefone'];
 
 
-  $sql = "insert into tb_usuario(dt_cadastro, nome, senha, cpf, crmv, email, telefone) 
-  values ('$dt_cadastro','$nome','$senha','$cpf','$crmv','$email','$telefone')";
+  $sql = "insert into tb_usuario(nome, data_nascimento, telefone, email, senha, cpf, crmv) 
+  values ('$nome','$data_nascimento','$telefone','$email','$senha','$cpf','$crmv')";
 
   $result = mysqli_query($con, $sql);
   if ($result) {
@@ -23,6 +25,8 @@ if (isset($_POST['salvar'])) {
     die(mysqli_error($con));
   }
 }
+
+// CADASTRAR USUARIO
 
 ?>
  <!doctype html>
@@ -42,51 +46,53 @@ if (isset($_POST['salvar'])) {
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <!-- <img src="img/florLiz3.png" class="rounded float-right" alt="1%"> -->
       <a class="navbar-brand" href="index.php">PetLu</a>
-      <div class="container text-light"> <h3>Cadastrar Usuário</h3> </div>
+      <div class="container text-light"> <h3>Cadastrar Novo Usuário</h3> </div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </div>
   </nav>
+<br>
+    <div class="container">
+      <form action="cadastrar_user.php" method="post">
+        <div class="col-4">
+          <label for="nome">Nome Completo</label>
+          <input type="text" name="nome" id="nome" class="form-control">
+        </div>
 
-  <div class="container my-2  col-md-4 m-auto" style='text-align: left'>
-    <form method="POST">
+        <div class="col-4">
+          <label for="data_nascimento">Data de Nascimento</label>
+          <input type="date" name="data_nascimento" id="data_nascimento" class="form-control" value="1980-01-01">
+        </div>
 
-    <div class="form-group">
-        <label>:Data
-        <input type="date" class="form-control" placeholder="Informe a data do cadastro" name="dt_cadastro" autocomplete="off">
-      </div>
-      <div class="form-group">
-        <label>:Usuário</label>
-        <input type="text" class="form-control" placeholder="Entre com seu nome" name="nome" autocomplete="on">
-      </div>
-      <div class="form-group">
-        <label>:Senha</label>
-        <input type="text" class="form-control" placeholder="Entre com sua Senha" name="senha" autocomplete="on">
-      </div>
-      <div class="form-group">
-        <label>:CPF</label>
-        <input type="text" class="form-control" placeholder="Entre com seu CPF" name="cpf" autocomplete="on">
-      </div>
-      <div class="form-group">
-        <label>:CRMV</label>
-        <input type="text" class="form-control" placeholder="Entre com seu CRMV" name="crmv" autocomplete="on">
-      </div>
-      <div class="form-group">
-        <label>:E-mail</label>
-        <input type="email" class="form-control" placeholder="Entre com seu e-mail" name="email" autocomplete="on">
-      </div>
-      <div class="form-group">
-        <label>:Telefone</label>
-        <input type="text" class="form-control" placeholder="Entre com seu telefone" name="telefone" autocomplete="on">
-      </div>
+        <div class="col-4">
+          <label for="telefone">Telefone para Contato</label>
+          <input type="tel" name="telefone" id="telefone" class="form-control">
+        </div>
 
-      <br>
-      <button type="submit" class="btn btn-primary" name="salvar">Salvar</button>
-      <a href="index.php" class="btn btn-warning">Voltar</a>
+        <div class="col-4">
+          <label for="email">E-mail</label>
+          <input type="email" name="email" id="email" class="form-control">
+        </div>
 
-</div>
-  </div>
-    </form>
+        <div class="col-4">
+          <label for="senha">Senha</label>
+          <input type="password" name="senha" id="senha" class="form-control">
+        </div>
+       
+        <div class="col-4">
+          <label for="nome">CPF</label>
+          <input type="text" name="cpf" id="cpf" class="form-control">
+       
+        </div>        <div class="col-4">
+          <label for="nome">CRMV</label>
+          <input type="text" name="crmv" id="crmv" class="form-control">
+        </div><br>
+
+        <button type="submit" name="enviarDados" class="btn btn-primary">Cadastrar</button>
+        <a href="index_rota.php" class="btn btn-danger">Voltar</a>
+
+      </form>
+    </div>
+  </body>
 </html>
