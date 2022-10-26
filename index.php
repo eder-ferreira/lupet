@@ -21,8 +21,8 @@
     </div>
     <div class="container">
       <h1>Bem vindos ao PetLu! </h1>
-      <!-- <form action="processa_login.php" method="post"> -->
-        <form action="index_rota.php">
+      <form action="valida_login.php" method="post">
+        <!-- <form action="index_rota.php"> -->
         <div class="col-4">
           <label for="email">E-mail</label>
           <input type="email" name="email" id="email" class="form-control">

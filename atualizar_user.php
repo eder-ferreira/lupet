@@ -21,8 +21,8 @@ $senha = $row['senha'];
 
 //ATUALIZA OS DADOS
 if (isset($_POST['atualizar'])) {
-  //$dtcadastro = $_POST['dt_cadastro'];
-  //$dt_atualizacao = $_POST['dt_atualizacao'];
+  $dtcadastro = $_POST['dt_cadastro'];
+  $dt_atualizacao = date("Y-m-d H:i:s");
   $nome = $_POST['nome'];
   $data_nascimento = $_POST['data_nascimento'];
   $telefone = $_POST['telefone'];
@@ -32,7 +32,7 @@ if (isset($_POST['atualizar'])) {
   $senha = $_POST['senha'];
 
 
-  $sql = "update tb_usuario set id='$id',nome='$nome',data_nascimento='$data_nascimento', 
+  $sql = "update tb_usuario set id='$id',dt_atualizacao='$dt_atualizacao',nome='$nome',data_nascimento='$data_nascimento', 
   telefone='$telefone',cpf='$cpf',crmv='$crmv',email='$email',senha='$senha'
   WHERE id='$id'";
 

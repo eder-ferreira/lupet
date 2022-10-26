@@ -20,7 +20,7 @@ if (isset($_POST['enviarDados'])) {
   $result = mysqli_query($con, $sql);
   if ($result) {
     echo "Dados inseridos com sucesso!";
-    header('location:cadastrar_user.php');
+    header('location:index.php');
   } else {
     die(mysqli_error($con));
   }
