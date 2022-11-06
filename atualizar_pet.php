@@ -21,6 +21,12 @@ $observação_animal = $row['observação_animal'];
 
 //ATUALIZA OS DADOS
 if (isset($_POST['atualizar'])) {
+
+    // DEFINE O FUSO HORARIO COMO O HORARIO DE BRASILIA
+    date_default_timezone_set('America/Cuiaba');
+    // CRIA UMA VARIAVEL E ARMAZENA A HORA ATUAL DO FUSO-HORÀRIO DEFINIDO (BRASÍLIA)
+    $dt_atualizacao = date('Y-m-d H:i:s', time());
+
  // $dt_atualizacao = $_POST['dt_atualizacao'];
   $nome_animal = $_POST['nome_animal'];
   $dt_nascimento = $_POST['dt_nascimento'];

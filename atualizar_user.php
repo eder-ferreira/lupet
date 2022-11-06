@@ -22,7 +22,11 @@ $senha = $row['senha'];
 //ATUALIZA OS DADOS
 if (isset($_POST['atualizar'])) {
   // $dtcadastro = $_POST['dt_cadastro'];
-  $dt_atualizacao = Date("Y-m-d H:i:s");
+
+  // DEFINE O FUSO HORARIO COMO O HORARIO DE BRASILIA
+  date_default_timezone_set('America/Cuiaba');
+  // CRIA UMA VARIAVEL E ARMAZENA A HORA ATUAL DO FUSO-HORÀRIO DEFINIDO (BRASÍLIA)
+      $dt_atualizacao = date('Y-m-d H:i:s', time());
  
   $nome = $_POST['nome'];
   $data_nascimento = $_POST['data_nascimento'];
@@ -75,8 +79,8 @@ if (isset($_POST['atualizar'])) {
     <form method="POST">
 
     <div class="form-group">
-        <label>Cadastrado em::</label><?php echo $dtcadastro; ?>
-        <label>Ultima Atualização:</label><?php echo $dt_atualizacao; ?>
+        <label>Cadastrado em: </label><?php echo $dtcadastro; ?>
+        <label>Ultima Atualização: </label><?php echo $dt_atualizacao; ?>
       </div>
 
       <div class="form-group">
