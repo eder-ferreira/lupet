@@ -21,8 +21,9 @@ $senha = $row['senha'];
 
 //ATUALIZA OS DADOS
 if (isset($_POST['atualizar'])) {
-  $dtcadastro = $_POST['dt_cadastro'];
-  $dt_atualizacao = date("Y-m-d H:i:s");
+  // $dtcadastro = $_POST['dt_cadastro'];
+  $dt_atualizacao = Date("Y-m-d H:i:s");
+ 
   $nome = $_POST['nome'];
   $data_nascimento = $_POST['data_nascimento'];
   $telefone = $_POST['telefone'];
